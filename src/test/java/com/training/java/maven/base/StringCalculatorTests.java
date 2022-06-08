@@ -23,6 +23,19 @@ public class StringCalculatorTests {
         var result = stringCalculator.Add(parameter);
 
         // then
-        assertEquals(parameter, result);
+        assertEquals(Integer.parseInt(parameter), result);
+    }
+
+    @Test
+    void should_return_sum_of_test_parameters() {
+        // given
+        var stringCalculator = new StringCalculator();
+        var parameter = "1, 2";
+
+        // when
+        var result = stringCalculator.Add(parameter);
+
+        // then
+        assertEquals(3, result);
     }
 }
