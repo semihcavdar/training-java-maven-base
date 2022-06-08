@@ -1,5 +1,6 @@
 package com.training.java.maven.base;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,12 +31,25 @@ public class StringCalculatorTests {
     void should_return_sum_of_test_parameters() {
         // given
         var stringCalculator = new StringCalculator();
-        var parameter = "1, 2";
+        var parameter = "1,2";
 
         // when
         var result = stringCalculator.Add(parameter);
 
         // then
         assertEquals(3, result);
+    }
+
+    @Test
+    void should_return_sum_of_four_numbers() {
+        // given
+        var stringCalculator = new StringCalculator();
+        var parameter = "1,2,3,4";
+
+        // when
+        var result = stringCalculator.Add(parameter);
+
+        // then
+        assertEquals(10, result);
     }
 }
