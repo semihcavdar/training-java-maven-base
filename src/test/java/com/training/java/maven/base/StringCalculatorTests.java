@@ -1,10 +1,8 @@
 package com.training.java.maven.base;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class StringCalculatorTests {
 
@@ -51,5 +49,18 @@ public class StringCalculatorTests {
 
         // then
         assertEquals(10, result);
+    }
+
+    @Test
+    void should_return_sum_of_six_numbers() {
+        // given
+        var stringCalculator = new StringCalculator();
+        var parameter = "1,2,3,4,5,6";
+
+        // when
+        var result = stringCalculator.Add(parameter);
+
+        // then
+        assertEquals(21, result);
     }
 }
