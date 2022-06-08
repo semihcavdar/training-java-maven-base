@@ -33,14 +33,7 @@ public class StringCalculator {
             sum += extractedNumber;
         }
         if(!negativeNumbers.isEmpty()) {
-            if(negativeNumbers.size() == 1) {
-                throw new InvalidParameterException("negatives not allowed: " + negativeNumbers.get(0));
-            } else {
-                throw new InvalidParameterException(Stream.of(negativeNumbers)
-                    .map(String::valueOf)
-                    .collect( Collectors.joining(",")));
-             //   throw new InvalidParameterException("negatives not allowed: " + negativeNumbers.stream().map(String::valueOf).reduce("", (a, b) -> a + ", " + b));
-            }
+            throw new InvalidParameterException("negatives not allowed: " + Arrays.toString(negativeNumbers.toArray()).replaceAll("\\[|\\]|\\s", ""));
         }
 
         return sum;
