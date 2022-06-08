@@ -63,4 +63,17 @@ public class StringCalculatorTests {
         // then
         assertEquals(21, result);
     }
+
+    @Test
+    void should_return_sum_of_three_numbers_separated_by_newline() {
+        // given
+        var stringCalculator = new StringCalculator();
+        var parameter = "1\n2,3";
+
+        // when
+        var result = stringCalculator.Add(parameter);
+
+        // then
+        assertEquals(6, result);
+    }
 }
