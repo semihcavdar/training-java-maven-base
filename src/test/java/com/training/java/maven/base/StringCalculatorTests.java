@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.security.InvalidParameterException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StringCalculatorTests {
 
@@ -114,5 +115,18 @@ public class StringCalculatorTests {
 
         // then
         assertEquals(6, result);
+    }
+
+    @Test
+    void should_throw_an_exception_for_a_negative_number() {
+        // given
+        var stringCalculator = new StringCalculator();
+        var parameter = "1,2,-3";
+
+        // when
+        InvalidParameterException thrown = Assertions.assertThrows(InvalidParameterException.class, () -> stringCalculator.Add(parameter));
+
+        // then
+        Assertions.assertEquals("negatives not allowed: -3", thrown.getMessage());
     }
 }
