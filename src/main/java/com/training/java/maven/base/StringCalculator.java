@@ -1,7 +1,10 @@
 package com.training.java.maven.base;
 
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StringCalculator {
     public int Add(String numbers) {
@@ -22,12 +25,22 @@ public class StringCalculator {
         }
 
         var extractedNumbers = Arrays.stream(numbers.split(",|\\n")).map(Integer::parseInt).toArray(Integer[]::new);
-
+        var negativeNumbers = new ArrayList<Integer>();
         for (Integer extractedNumber : extractedNumbers) {
             if(extractedNumber < 0){
-                throw new InvalidParameterException("negatives not allowed: " + extractedNumber);
+                negativeNumbers.add(extractedNumber);
             }
             sum += extractedNumber;
+        }
+        if(!negativeNumbers.isEmpty()) {
+            if(negativeNumbers.size() == 1) {
+                throw new InvalidParameterException("negatives not allowed: " + negativeNumbers.get(0));
+            } else {
+                throw new InvalidParameterException(Stream.of(negativeNumbers)
+                    .map(String::valueOf)
+                    .collect( Collectors.joining(",")));
+             //   throw new InvalidParameterException("negatives not allowed: " + negativeNumbers.stream().map(String::valueOf).reduce("", (a, b) -> a + ", " + b));
+            }
         }
 
         return sum;
