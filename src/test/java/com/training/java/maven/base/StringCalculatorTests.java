@@ -89,4 +89,17 @@ public class StringCalculatorTests {
         // when && then
         Assertions.assertThrows(InvalidParameterException.class, ()->stringCalculator.Add(parameter));
     }
+
+    @Test
+    void should_return_3_when_parameters_1_and_2_and_delimiter_is_semicolon() {
+        // given
+        var stringCalculator = new StringCalculator();
+        var parameter = "//;\n1;2";
+
+        // when
+        var result = stringCalculator.Add(parameter);
+
+        // then
+        assertEquals(3, result);
+    }
 }
