@@ -1,6 +1,9 @@
 package com.training.java.maven.base;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.security.InvalidParameterException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -75,5 +78,15 @@ public class StringCalculatorTests {
 
         // then
         assertEquals(6, result);
+    }
+
+    @Test
+    void should_throw_exception_when_comma_and_newline_following_each_other() {
+        // given
+        var stringCalculator = new StringCalculator();
+        var parameter = "1,\n";
+
+        // when && then
+        Assertions.assertThrows(InvalidParameterException.class, ()->stringCalculator.Add(parameter));
     }
 }
