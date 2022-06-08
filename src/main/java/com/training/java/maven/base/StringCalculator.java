@@ -13,7 +13,7 @@ public class StringCalculator {
 
         if(numbers.startsWith("//")) {
             var seperatedByNewLine = numbers.split("\n");
-            var delimiters = seperatedByNewLine[0];
+            var delimiters = seperatedByNewLine[0].split("//")[1];
 
             var extractedNumbers = Arrays.stream(seperatedByNewLine[1].split(delimiters + "|" + ";")).map(Integer::parseInt).toArray(Integer[]::new);
             for (Integer extractedNumber : extractedNumbers) sum += extractedNumber;

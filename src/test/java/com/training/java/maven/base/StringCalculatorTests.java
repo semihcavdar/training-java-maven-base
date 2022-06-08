@@ -104,7 +104,7 @@ public class StringCalculatorTests {
     }
 
     @Test
-    void should_return_6_when_parameters_1_and_2_and_3_and_delimiter_is_semicolon() {
+    void should_return_6_when_parameters_1_and_2_and_3_and_delimiter_is_exclamation_mark() {
         // given
         var stringCalculator = new StringCalculator();
         var parameter = "//!\n1!2!3";
