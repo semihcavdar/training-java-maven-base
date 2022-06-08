@@ -23,7 +23,12 @@ public class StringCalculator {
 
         var extractedNumbers = Arrays.stream(numbers.split(",|\\n")).map(Integer::parseInt).toArray(Integer[]::new);
 
-        for (Integer extractedNumber : extractedNumbers) sum += extractedNumber;
+        for (Integer extractedNumber : extractedNumbers) {
+            if(extractedNumber < 0){
+                throw new InvalidParameterException("negatives not allowed: " + extractedNumber);
+            }
+            sum += extractedNumber;
+        }
 
         return sum;
     }

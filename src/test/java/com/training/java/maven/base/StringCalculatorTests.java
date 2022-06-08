@@ -129,4 +129,17 @@ public class StringCalculatorTests {
         // then
         Assertions.assertEquals("negatives not allowed: -3", thrown.getMessage());
     }
+
+    @Test
+    void should_throw_an_exception_for_a_multiple_negative_number() {
+        // given
+        var stringCalculator = new StringCalculator();
+        var parameter = "1,2,-3,-4";
+
+        // when
+        InvalidParameterException thrown = Assertions.assertThrows(InvalidParameterException.class, () -> stringCalculator.Add(parameter));
+
+        // then
+        Assertions.assertEquals("negatives not allowed: -3,-4", thrown.getMessage());
+    }
 }
